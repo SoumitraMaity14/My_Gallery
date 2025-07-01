@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Testimonial</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+  <style>
+    .testimonial {
+      position: relative;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: #2196f3;
+      overflow: hidden;
+      font-size: 14px;
+    }
+
+    .swiper {
+      width: 100%;
+      padding-top: 50px;
+      padding-bottom: 50px;
+    }
+
+    .allslide {
+      width: 420px;
+      background-position: center;
+      background-size: cover;
+      background-color: #fff;
+      box-shadow: 0 15px 50px rgba(0, 0, 0, 0.2);
+      filter: blur(4px);
+      border-radius: 10px;
+    }
+
+    .swiper-slide-active {
+      filter: blur(0px);
+    }
+
+    .testimonialBox {
+      position: relative;
+      width: 420px;
+      padding: 40px;
+      padding-top: 90px;
+      color: #999;
+    }
+
+    .testimonialBox .quote {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      opacity: 0.5;
+    }
+
+    .testimonialBox .details {
+      display: flex;
+      align-items: center;
+      margin-top: 20px;
+    }
+
+    .imgBx img {
+      width: 60px;
+      height: 60px;
+    }
+
+    .imgBx {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .imgBx h3 {
+      margin-left: 10px;
+    }
+
+    .swiper-3d .swiper-slide-shadow-left,
+    .swiper-3d .swiper-slide-shadow-right {
+      display: none;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="testimonial">
+    <div class="swiper mySwiper">
+      <div class="swiper-wrapper" id="swiper-wrapper"></div>
+    </div>
+  </div>
+
+  <!-- ✅ Swiper JS First -->
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+  <!-- ✅ Your Script After Swiper Is Loaded -->
+  <script>
+    const testimonials = [
+      {
+        text: "They recently completed my business website, and I couldn't be happier with the results.",
+        image: "/images/robert.png",
+        name: "Robert Ms",
+        role: "creative design",
+      },
+      {
+        text: "The developers were incredibly professional and helpful. Great communication.",
+        image: "/images/robert.png",
+        name: "Anna Smith",
+        role: "project manager",
+      },
+      {
+        text: "Excellent service and attention to detail. Highly recommend.",
+        image: "/images/robert.png",
+        name: "John Doe",
+        role: "entrepreneur",
+      },
+    ];
+
+    const wrapper = document.getElementById("swiper-wrapper");
+
+    testimonials.forEach((testimonial) => {
+      const slide = document.createElement("div");
+      slide.className = "swiper-slide allslide";
+      slide.innerHTML = `
+        <div class="testimonialBox">
+          <img src="/images/lq-2.png" class="quote">
+          <div class="content">
+            <p>${testimonial.text}</p>
+            <div class="details">
+              <div class="imgBx">
+                <img src="${testimonial.image}">
+                <h3>${testimonial.name} <br> <span>${testimonial.role}</span></h3>
+              </div>
+            </div>
+          </div>
+        </div>
+      `;
+      wrapper.appendChild(slide);
+    });
+
+    // ✅ Now Swiper will work
+    const swiper = new Swiper(".mySwiper", {
+      effect: "coverflow",
+      grabCursor: true,
+      centeredSlides: true,
+      slidesPerView: "auto",
+      coverflowEffect: {
+        rotate: 0,
+        stretch: 0,
+        depth: 100,
+        modifier: 2,
+        slideShadows: true,
+      },
+      loop: true,
+    });
+  </script>
+</body>
+</html>
